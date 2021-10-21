@@ -8,7 +8,7 @@ from dp import dp_histogram
 def expose(query_func):
   headers, many_results = None, []
   # Make many queries and save their results.
-  print("Making 200 queries. This may take a minute...")
+  print("Making 200 queries with noise. This may take a minute...")
   for i in range(200):
     headers, results = query_func()
     many_results.append(results)
@@ -31,8 +31,10 @@ def expose(query_func):
 if __name__ == "__main__":
   # For testing: if your expose function works, then you should be able
   # to expose the original results of the age and music histogram from 
-  # the noised one.
-  print("Testing: the two histogram should be (almost) equal")
+  # the noised data.
+  print("TESTING: the two histograms should be (almost) equal.\n")
+
+  print("Non-noised histogram (from part 1):")
   headers, result = count(["age", "music"], False)
   _pretty_print(headers, result)
 

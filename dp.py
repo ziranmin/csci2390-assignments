@@ -49,7 +49,9 @@ def plot(epsilon):
   ys = [d.get(x, 0) / ITERATIONS for x in xs]
 
   # Plot.
-  pyplot.plot(xs, ys, 'o-')
+  pyplot.plot(xs, ys, 'o-', ds='steps-mid')
+  pyplot.xlabel("Count value")
+  pyplot.ylabel("Frequency")
   pyplot.savefig('dp-plot.png')
 
 # Run this for epsilon 0.5
