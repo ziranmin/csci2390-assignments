@@ -14,11 +14,20 @@ def expose(query_func):
     many_results.append(results)
 
   # Expose the value of the query.
+  #
+  # many_results is structured as follows:
+  # - many_results is a list of results from the 200 queries
+  # - many_results[i] is a set of rows returned from a particular query
+  # - many_results[i][r] is a set of columns for the query, with the aggregation
+  #   value in the last column
   exposed_result = []
+  num_iterations = len(many_results)
   cols = len(headers)
   rows = len(many_results[0])
-  for i in range(0, rows):
-    # TODO: compute the actual value of row i, given all the noised values from
+  # This generates a single table with `rows` rows; your task is to use
+  # `many_results` to compute each row's aggregation value.
+  for r in range(0, rows):
+    # TODO: compute the actual value of row r, given all the noised values from
     # making many queries.
     value = "?"
     
