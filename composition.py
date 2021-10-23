@@ -32,7 +32,7 @@ def expose(query_func):
     value = "?"
     
     # Append value and attached label to exposed result.
-    labels = tuple(many_results[0][i][:-1])
+    labels = tuple(many_results[0][r][:-1])
     exposed_result.append(labels + (value,))    
 
   return headers, exposed_result
