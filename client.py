@@ -3,7 +3,7 @@ import traceback
 import json
 import sys
 
-URL = "http://18.118.1.235:3000"
+URL = "http://3.136.128.172:3000"
 
 def help():
   print("This file exposes three functions: avg(...), count(...), and count0(...).")
