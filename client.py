@@ -29,7 +29,8 @@ def help():
   print("")
   print("You can import this file into your own python script using 'import client' and then use the above functions.")
   print("Alternatively, you can use run this file from the command line to explore the data , for example:")
-  print(" $ python3 client.py count programming age    # count per programming and age")
+  print(" $ python3 client.py count age music             # count per music and age")
+  print(" $ python3 client.py dp count programming age    # count per programming and age with dp noise added")
   print(" $ python3 client.py dp avg age sport color      # average age per sport and color with dp noise added")
 
 
