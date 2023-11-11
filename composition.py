@@ -29,7 +29,10 @@ def expose(query_func):
   for r in range(0, rows):
     # TODO: compute the actual value of row r, given all the noised values from
     # making many queries.
-    value = "?"
+    total = 0
+    for i in range(0, num_iterations):
+      total += many_results[i][r][-1]
+    value = round(total/num_iterations)
     
     # Append value and attached label to exposed result.
     labels = tuple(many_results[0][r][:-1])
@@ -41,27 +44,29 @@ if __name__ == "__main__":
   # For testing: if your expose function works, then you should be able
   # to expose the original results of the age and music histogram from 
   # the noised data.
-  print("TESTING: the two histograms should be (almost) equal.\n")
 
-  print("Non-noised histogram (from part 1):")
-  headers, result = count(["age", "music"], False)
-  _pretty_print(headers, result)
 
-  headers, result = expose(lambda: dp_histogram(0.5))
-  _pretty_print(headers, result)  
+  # print("TESTING: the two histograms should be (almost) equal.\n")
+  #
+  # print("Non-noised histogram (from part 1):")
+  # headers, result = count(["age", "music"], False)
+  # _pretty_print(headers, result)
+  #
+  # headers, result = expose(lambda: dp_histogram(0.5))
+  # _pretty_print(headers, result)
 
   # Expose the average age per programming level.
-  '''
-  print("Exposing average:")
-  headers, result = expose(lambda: avg(["programming"], "age", True))
-  _pretty_print(headers, result)
-  print("")
-  '''
-  
+
+  # print("Exposing average:")
+  # headers, result = expose(lambda: avg(["programming"], "age", True))
+  # _pretty_print(headers, result)
+  # print("")
+
+
   # Expose the count of people per programming level.
-  '''
+  #
   print("Exposing count:")
   headers, result = expose(lambda: count0(["programming"], True))
   _pretty_print(headers, result)
   print("")
-  '''
+
